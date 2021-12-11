@@ -34,6 +34,7 @@ for i in $@
                 ;;
             -a)
                 which $whichflags
+                echo "Also searching filesystem..."
                 for i in $files
                 do
                     if	mdfind \(kMDItemDisplayName=="$i"\) \&\& \(kMDItemContentType==public.unix-executable\)
@@ -53,7 +54,7 @@ for i in $@
                 echo "Not found in path, searching filesystem."
                 for i in $files
                 do
-			    if  mdfind kMDItemDisplayName==$i kMDItemContentType==public.unix-executable
+			    if  mdfind \(kMDItemDisplayName=="$i"\) \&\& \(kMDItemContentType==public.unix-executable\)
                 then
                    	break
                 else
