@@ -23,6 +23,11 @@ then
    -s : No output, just return 0 if all of the executables are found, or 1 if some were not found.\n \
    -p : Limit search to \$PATH, just like which." 
 fi
+if !command -v which &> /dev/null || !command -v grep &> /dev/null
+then
+    echo "Error: required dependencies not installed. Exiting"
+    exit
+fi
 files=`echo $@ | sed 's/-a//g' | sed 's/-s//g' | sed 's/-p//g'`
 whichflags=`echo $@ | sed 's/-p//g'`
 for i in $@
