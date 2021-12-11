@@ -1,5 +1,5 @@
 # whiff
-whiff - a better which for when which whiffs
+**whiff** - a better which for when which whiffs
 
 Usage: **whiff -asp**
 
