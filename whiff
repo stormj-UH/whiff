@@ -30,13 +30,13 @@ then
 fi
 files=`echo $@ | sed 's/-a//g' | sed 's/-s//g' | sed 's/-p//g'`
 whichflags=`echo $@ | sed 's/-p//g'`
-for i in $@
+whifflags=`echo $@ | sed 's/-s//g'`
+for i in $whifflags
     do
        case $i in
             -p)
                 which $whichflags
-                return $?
-                exit
+                exit $?
                 ;;
             -a)
                 which $whichflags
@@ -56,8 +56,7 @@ for i in $@
             *)
                 if which $whichflags
                 then
-                    return $?
-                    exit
+                    exit $?
                 fi
                 echo "Not found in path, searching filesystem."
                 for i in $files
