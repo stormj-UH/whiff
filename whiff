@@ -37,9 +37,10 @@ for i in $@
                 echo "Also searching filesystem..."
                 for i in $files
                 do
-                    if	mdfind \(kMDItemDisplayName=="$i"\) \&\& \(kMDItemContentType==public.unix-executable\)
-		            then
-			            break
+                    if command -v mdfind &> /dev/null
+                    then
+                        mdfind \(kMDItemDisplayName=="$i"\) \&\& \(kMDItemContentType==public.unix-executable\)
+		                break
 		            else
 			            find / -type f -perm /u=x -perm /u=r -iname $i 2>&1 | grep -v -e "Permission denied" -e "Operation not permitted" -e "No such file or directory"
 		            fi
@@ -54,9 +55,10 @@ for i in $@
                 echo "Not found in path, searching filesystem."
                 for i in $files
                 do
-			    if  mdfind \(kMDItemDisplayName=="$i"\) \&\& \(kMDItemContentType==public.unix-executable\)
+			    if command -v mdfind &> /dev/null 
                 then
-                   	break
+                    mdfind \(kMDItemDisplayName=="$i"\) \&\& \(kMDItemContentType==public.unix-executable\)
+                    break
                 else
                     find / -type f -perm /u=x -perm /u=r -iname $i 2>&1 | grep -v -e "Permission denied" -e "Operation not permitted" -e "No such file or directory"
                 fi
