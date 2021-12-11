@@ -1,6 +1,6 @@
 .TH WHIFF 1
 .SH NAME
-whiff - a better which for when which whiffs
+whiff - a slightly better which for when which whiffs
 .SH SYNOPSIS
 .B whiff
 [\fB\-asp\fR]
