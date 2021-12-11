@@ -1,0 +1,19 @@
+.TH WHIFF 1
+.SH NAME
+whiff - a better which for when which whiffs
+.SH SYNOPSIS
+.B whiff
+[\fB\-asp\fR]
+.IR program ...
+.SH DESCRIPTION
+The \fB\whiff\fR\ utility takes a list of command names and first searches the path for each executable file that would be run had these commands actually been invoked. If it finds none, it searches the filesystem for all executables the user has permission to execute.
+.SH OPTIONS
+.TP
+.BR \-a 
+List all instances of executables found (instead of just the first one of each).
+.BR \-s
+No output, just return 0 if all of the executables are found, or 1 if some were not found.
+.BR \-p
+Limit search to $PATH, just like \fB\which\fR\
+.SH AUTHOR
+The \fB\whiff\fR utility was written in shell script by Jon-Erik Storm <jonerik@gmail.com>
